@@ -21,7 +21,6 @@ import java.util.Locale;
  * OracleUpperTable.java.
  *
  * @author afield
- * @since 182
  *
  * @see OracleUpper
  * @see OracleUpperTable

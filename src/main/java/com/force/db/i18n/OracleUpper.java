@@ -13,7 +13,6 @@ import org.apache.commons.lang.StringUtils;
  * expressions.
  * 
  * @author afield
- * @since 182
  * 
  * @see OracleUpperTable
  */

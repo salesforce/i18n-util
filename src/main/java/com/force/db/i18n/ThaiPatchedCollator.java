@@ -11,15 +11,12 @@ import java.text.Collator;
 
 /**
  * Patched java thai collator to prevent it from doing infinite loops / OOMs.
- * (see bug https://gus.soma.salesforce.com/a0790000000CeOH
- * and http://bugs.sun.com/view_bug.do?bug_id=5047314)
  * Delegates to original Collator.
  * This is awkward as Collator is an abstract class and not an interface.
  * (inheritance from RuleBasedCollator would be even worse though)
  *
  *
  * @author glestum
- * @since 162
  * @deprecated This was fixed in JDK7_84
  */
 @Deprecated 

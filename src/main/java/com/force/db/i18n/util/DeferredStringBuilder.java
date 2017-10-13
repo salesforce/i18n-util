@@ -14,7 +14,6 @@ package com.force.db.i18n.util;
  * case, no additional memory is used (as the original String is not actually copied).
  *
  * @author davem
- * @since 132
  */
 public final class DeferredStringBuilder implements Appendable, CharSequence {
 

@@ -40,7 +40,6 @@ import com.force.db.i18n.util.DeferredStringBuilder;
  * select value from v$nls_valid_values where parameter='SORT';
  *
  * @author stamm
- * @since 120is, 164
  */
 public enum LinguisticSort {
     // English:

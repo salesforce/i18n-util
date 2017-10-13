@@ -60,7 +60,6 @@ import junit.framework.TestCase;
  * This could be expanded significantly.
  *
  * @author tkim
- * @since 142.10
  */
 
 public class LinguisticSortTest extends TestCase {
