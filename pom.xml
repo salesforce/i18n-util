@@ -59,8 +59,8 @@
   <properties>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-    <icu4j.version>59.1</icu4j.version>
-    <icu4j-localespi.version>59.1</icu4j-localespi.version>
+    <icu4j.version>60.1</icu4j.version>
+    <icu4j-localespi.version>60.1</icu4j-localespi.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
