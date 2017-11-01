@@ -61,6 +61,7 @@
     <maven.compiler.target>1.7</maven.compiler.target>
     <icu4j.version>60.1</icu4j.version>
     <icu4j-localespi.version>60.1</icu4j-localespi.version>
+    <icu4j-charset.version>60.1</icu4j-charset.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
@@ -231,7 +232,11 @@
       <groupId>com.ibm.icu</groupId>
       <artifactId>icu4j-localespi</artifactId>
       <version>${icu4j-localespi.version}</version>
-      <!-- <scope>optional</scope> -->
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.icu</groupId>
+      <artifactId>icu4j-charset</artifactId>
+      <version>${icu4j-charset.version}</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
