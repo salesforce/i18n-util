@@ -3,7 +3,7 @@
   
   <groupId>com.salesforce.i18n</groupId>
   <artifactId>i18n-util</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
     
   <name>I18n Utils</name>
