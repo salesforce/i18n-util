@@ -565,9 +565,11 @@ public class LinguisticSortTest extends TestCase {
      */
     public void testChineseSorting() {
         final List<String> toSort = ImmutableList.of("\u963f","\u55c4","\u963e","\u554a","\u4ec8","\u3d9a","\u9f51");
-        assertEquals(ImmutableList.of("\u554a","\u963f","\u55c4","\u9f51","\u3d9a","\u4ec8","\u963e"), cloneAndSort(LinguisticSort.CHINESE, toSort));
-        assertEquals(ImmutableList.of("\u963f","\u554a","\u4ec8","\u55c4","\u3d9a","\u963e","\u9f51"), cloneAndSort(LinguisticSort.CHINESE_TW, toSort));
-        assertEquals(ImmutableList.of("\u963f","\u55c4","\u554a","\u4ec8","\u9f51","\u963e","\u3d9a"), cloneAndSort(LinguisticSort.CHINESE_STROKE, toSort));
+        assertEquals(ImmutableList.of("\u4ec8","\u554a","\u55c4","\u3d9a","\u963e","\u963f","\u9f51"), cloneAndSort(LinguisticSort.CHINESE, toSort));
+        assertEquals(ImmutableList.of("\u4ec8","\u554a","\u55c4","\u3d9a","\u963e","\u963f","\u9f51"), cloneAndSort(LinguisticSort.CHINESE_HK, toSort));
+        assertEquals(ImmutableList.of("\u4ec8","\u554a","\u55c4","\u3d9a","\u963e","\u963f","\u9f51"), cloneAndSort(LinguisticSort.CHINESE_TW, toSort));
+        assertEquals(ImmutableList.of("\u4ec8","\u963e","\u963f","\u554a","\u55c4","\u9f51","\u3d9a"), cloneAndSort(LinguisticSort.CHINESE_STROKE, toSort));
+        assertEquals(ImmutableList.of("\u4ec8","\u963e","\u963f","\u554a","\u55c4","\u9f51","\u3d9a"), cloneAndSort(LinguisticSort.CHINESE_HK_STROKE, toSort));
         assertEquals(ImmutableList.of("\u4ec8","\u963e","\u963f","\u554a","\u55c4","\u9f51","\u3d9a"), cloneAndSort(LinguisticSort.CHINESE_TW_STROKE, toSort));
         assertEquals(ImmutableList.of("\u963f","\u55c4","\u554a","\u4ec8","\u9f51","\u963e","\u3d9a"), cloneAndSort(LinguisticSort.CHINESE_PINYIN, toSort));
     }
