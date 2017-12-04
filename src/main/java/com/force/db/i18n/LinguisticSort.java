@@ -404,6 +404,35 @@ public enum LinguisticSort {
         this(locale, getAlphabetFromICU(locale), highValue, reverseSecondary, hasDoubleWidth, collationKeySql);
     }
 
+    // Mapping for locales and ULocale language tags to use for constructing an ICU4J collator.
+    // javac complains if we attempt to refer to a static defined inside the same class as an enum,
+    // so we need to use an inner class to have such a constant mapping.
+    private static final class Icu4jCollatorOverrides {
+        static final Map<Locale, String> overrides = getIcu4jCollatorOverrides();
+
+        private static Map<Locale, String> getIcu4jCollatorOverrides() {
+            // Map between a Locale and a BCP47 language tag to use when calling ICU4J's
+            // Collator.getInstance(ULocale.forLanguageTag()).
+            Map<Locale, String> overrides = new HashMap<Locale, String>(7);
+
+            // Built-in JDK collators for Chinese are behind the Unicode standard, so we need to override them.
+            // See discussion at https://stackoverflow.com/questions/33672422/wrong-sorting-with-collator-using-locale-simplified-chinese
+            // Also see the following JDK collator bugs:
+            // https://bugs.openjdk.java.net/browse/JDK-6415666
+            // https://bugs.openjdk.java.net/browse/JDK-2143916
+            // https://bugs.openjdk.java.net/browse/JDK-6411864
+            overrides.put(new Locale("zh", "HK"), "zh-HK-u-co-unihan"); // CHINESE_HK
+            overrides.put(new Locale("zh", "HK", "STROKE"), "zh-HK-u-co-stroke"); // CHINESE_HK_STROKE
+            overrides.put(new Locale("zh", "TW"), "zh-TW-u-co-unihan"); // CHINESE_TW
+            overrides.put(new Locale("zh", "TW", "STROKE"), "zh-TW-u-co-stroke"); // CHINESE_TW_STROKE
+            overrides.put(new Locale("zh"), "zh-CN-u-co-unihan"); // CHINESE
+            overrides.put(new Locale("zh", "", "STROKE"), "zh-CN-u-co-stroke"); // CHINESE_STROKE
+            overrides.put(new Locale("zh", "", "PINYIN"), "zh-CN-u-co-pinyin"); // CHINESE_PINYIN
+
+            return Collections.unmodifiableMap(overrides);
+        }
+    }
+
     /**
      * Constructor only used when building static data
      */
@@ -417,7 +446,11 @@ public enum LinguisticSort {
         this.hasDoubleWidth = hasDoubleWidth;
         this.collationKeySql = collationKeySql;
         // Construct collator for this locale
-        if (this.locale.getVariant().length() > 0) {
+        if (Icu4jCollatorOverrides.overrides.containsKey(this.locale)) {
+            // Force ICU4J collators for specific locales so they match Oracle sort
+            this.collator = CollatorICU.wrap(com.ibm.icu.text.Collator.getInstance(
+                    ULocale.forLanguageTag(Icu4jCollatorOverrides.overrides.get(this.locale))));
+        } else if (this.locale.getVariant().length() > 0) {
             // If there's a variant, use ICU4J to figure it out.
             this.collator = CollatorICU.wrap(com.ibm.icu.text.Collator.getInstance(ULocale.forLocale(this.locale)));
         } else {
