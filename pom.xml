@@ -3,7 +3,7 @@
   
   <groupId>com.salesforce.i18n</groupId>
   <artifactId>i18n-util</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
+  <version>1.0.3-SNAPSHOT</version>
   <packaging>jar</packaging>
     
   <name>I18n Utils</name>
@@ -59,9 +59,9 @@
   <properties>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-    <icu4j.version>60.2</icu4j.version>
-    <icu4j-localespi.version>60.2</icu4j-localespi.version>
-    <icu4j-charset.version>60.2</icu4j-charset.version>
+    <icu4j.version>60.1</icu4j.version>
+    <icu4j-localespi.version>60.1</icu4j-localespi.version>
+    <icu4j-charset.version>60.1</icu4j-charset.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
@@ -256,7 +256,7 @@
     <url>
       https://github.com/salesforce/i18n-util.git
     </url>
-    <tag>i18n-util-1.0.4</tag>
+    <tag>i18n-util-1.0.3</tag>
   </scm>
   
 </project>
