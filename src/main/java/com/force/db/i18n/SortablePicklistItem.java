@@ -8,7 +8,7 @@ package com.force.db.i18n;
 
 /**
  * Interface for picklists that are backed in the database, where the value in
- * the DB is not the same as what is displaye din the use 
+ * the DB is not the same as what is displayed in the use.
  * 
  * @author stamm
  * @since 164

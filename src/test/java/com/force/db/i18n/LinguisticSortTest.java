@@ -490,7 +490,7 @@ public class LinguisticSortTest extends TestCase {
      * For posterity, when I run this on my machine, I see results like this (averages rounded to nearest 10ms):
      * <p>
      * <table>
-     * <tr><td></td><td>ENGLSIH</td><td>ESPERANTO</td><td>GREEK</td></tr>
+     * <tr><td></td><td>ENGLISH</td><td>ESPERANTO</td><td>GREEK</td></tr>
      * <tr><td>with sharp s</td><td>330ms</td><td>260ms</td><td>370ms</td></tr>
      * <tr><td>without sharp s</td><td>150ms</td><td>130ms</td><td>213ms</td></tr>
      * </table>

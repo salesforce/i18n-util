@@ -176,7 +176,7 @@ public enum LinguisticSort {
 
     // Ukrainian:
     //   Using oracle's nlssort() function to sort.
-    UKRANIAN(new Locale("uk"), null, false, false, "nlssort({0}, ''nls_sort=ukrainian'')"),
+    UKRAINIAN(new Locale("uk"), null, false, false, "nlssort({0}, ''nls_sort=ukrainian'')"),
 
     // Hungarian:
     //   Using oracle's nlssort() function to sort.
@@ -505,7 +505,7 @@ public enum LinguisticSort {
 
     /**
      * @return a new comparator for strings for this LinguisticSort instance.
-     * @param the number of elements to compare (default is 16).
+     * @param size the number of elements to compare (default is 16).
      */
     public Comparator<String> getComparator(int size) {
         return new CollatingComparator(getCollator(), size);
@@ -574,9 +574,9 @@ public enum LinguisticSort {
     /**
      * Return the rolodexIndex for a string.
      *
-     * @param searchTerm.  Must be a 1-char string
+     * @param searchTerm  Must be a 1-char string
      * @return the rolodexIndex, including Other (i.e. getAlphabetLength) if it doesn't fall into a bucket.  If
-     *      this langugage doesn't have a rolodex (e.g. Arabic, Latvian, etc.) return -1
+     *      this language doesn't have a rolodex (e.g. Arabic, Latvian, etc.) return -1
      * @throws IllegalArgumentException if the string is null or not of length 1
      */
     public int getRolodexIndexForChar(String searchTerm) {
@@ -1198,7 +1198,7 @@ public enum LinguisticSort {
 
     /**
      * Apex and possibly other things collate based on upper case versions of strings.  Always upper casing and then comparing is slow, though,
-     * so this method is intended to return a collator that is consisent with uppper-case-then-compare while perhaps
+     * so this method is intended to return a collator that is consistent with upper-case-then-compare while perhaps
      * doing something more efficient
      */
     public Collator getUpperCaseCollator(final boolean isPostgres) {
@@ -1218,7 +1218,7 @@ public enum LinguisticSort {
             return new Collator() {
                 @Override
                 public int compare(String source, String target) {
-                    // upper case only strings where the SECONDARY strengh comparison (case insensitive comparison)
+                    // upper case only strings where the SECONDARY strength comparison (case insensitive comparison)
                     // is possibly different for upper cased and non upper cased strings
                     return innerCollator.compare(getUpperCaseIfNeeded(source), getUpperCaseIfNeeded(target));
                 }
